@@ -1,0 +1,24 @@
+import ShieldMark from './ShieldMark';
+
+interface ShieldDividerProps {
+  tone?: 'light' | 'dark';
+  className?: string;
+}
+
+/**
+ * A quiet horizontal rule with the shield mark centered at low opacity.
+ * This is the one place the motif repeats outside the logo — kept small
+ * and restrained so it reads as a signature, not decoration.
+ */
+export default function ShieldDivider({ tone = 'light', className = '' }: ShieldDividerProps) {
+  const lineColor = tone === 'light' ? 'bg-outline-variant' : 'bg-white/15';
+  const iconColor = tone === 'light' ? 'text-forest-green-deep/30' : 'text-ivory-white/30';
+
+  return (
+    <div className={`flex items-center justify-center gap-4 ${className}`} aria-hidden="true">
+      <span className={`h-px w-16 md:w-28 ${lineColor}`} />
+      <ShieldMark className={`h-6 w-auto ${iconColor}`} />
+      <span className={`h-px w-16 md:w-28 ${lineColor}`} />
+    </div>
+  );
+}
