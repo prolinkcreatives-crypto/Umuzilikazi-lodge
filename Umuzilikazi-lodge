@@ -1,1 +1,2206 @@
+{
+  "name": "umuzilikazi-lodge",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "framer-motion": "^11.3.0",
+    "zustand": "^4.5.4",
+    "date-fns": "^3.6.0",
+    "react-hook-form": "^7.52.0",
+    "zod": "^3.23.8",
+    "@hookform/resolvers": "^3.9.0",
+    "recharts": "^2.12.7",
+    "lucide-react": "^0.408.0",
+    "@supabase/supabase-js": "^2.45.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.3.1",
+    "typescript": "^5.5.3",
+    "vite": "^5.3.4",
+    "tailwindcss": "^3.4.6",
+    "postcss": "^8.4.39",
+    "autoprefixer": "^10.4.19"
+  }
+}
 
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true
+  },
+  "include": ["src"]
+}
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+export default defineConfig({
+  plugins: [react()],
+});
+import type { Config } from 'tailwindcss';
+
+export default {
+  content: ['./index.html', './src/**/*.{ts,tsx}'],
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        surface: '#fbf9f8',
+        'surface-dim': '#dbdad9',
+        'surface-bright': '#fbf9f8',
+        'surface-container-lowest': '#ffffff',
+        'surface-container-low': '#f5f3f3',
+        'surface-container': '#efeded',
+        'surface-container-high': '#e9e8e7',
+        'surface-container-highest': '#e3e2e2',
+        'on-surface': '#1b1c1c',
+        'on-surface-variant': '#414944',
+        outline: '#717974',
+        'outline-variant': '#c0c9c2',
+
+        primary: '#001f14',
+        'on-primary': '#ffffff',
+        'primary-container': '#013626',
+        'on-primary-container': '#71a08b',
+
+        secondary: '#755b00',
+        'on-secondary': '#ffffff',
+        'secondary-container': '#fed979',
+        'on-secondary-container': '#785d03',
+
+        tertiary: '#1a1a1a',
+        'on-tertiary': '#ffffff',
+
+        'forest-green': '#013626',
+        'forest-green-deep': '#001f14',
+        'warm-gold': '#755b00',
+        'warm-gold-bright': '#e6c366',
+        'soft-beige': '#f0eded',
+        'ivory-white': '#fcf9f8',
+        bronze: '#8a6a3f',
+        wood: '#5c4530',
+        stone: '#cfc9c0',
+      },
+      fontFamily: {
+        display: ['"Playfair Display"', 'serif'],
+        body: ['Inter', 'sans-serif'],
+      },
+      fontSize: {
+        'display-lg': ['64px', { lineHeight: '1.1', letterSpacing: '-0.02em', fontWeight: '700' }],
+        'headline-lg': ['40px', { lineHeight: '1.2', fontWeight: '600' }],
+        'headline-lg-mobile': ['32px', { lineHeight: '1.2', fontWeight: '600' }],
+        'headline-md': ['28px', { lineHeight: '1.3', fontWeight: '500' }],
+        'body-lg': ['18px', { lineHeight: '1.6' }],
+        'body-md': ['16px', { lineHeight: '1.6' }],
+        'label-md': ['14px', { lineHeight: '1.0', letterSpacing: '0.05em', fontWeight: '600' }],
+        'label-sm': ['12px', { lineHeight: '1.0', fontWeight: '500' }],
+      },
+      borderRadius: {
+        sm: '0.25rem',
+        DEFAULT: '0.5rem',
+        md: '0.75rem',
+        lg: '1rem',
+        xl: '1.5rem',
+        full: '9999px',
+      },
+      spacing: {
+        gutter: '24px',
+        'margin-mobile': '16px',
+        'section-v': '80px',
+      },
+      maxWidth: {
+        content: '1200px',
+      },
+      backdropBlur: {
+        glass: '12px',
+      },
+    },
+  },
+  plugins: [],
+} satisfies Config;
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Umuzilikazi Lodge | Where Zambian Heritage Meets Timeless Luxury</title>
+    <meta name="description" content="A boutique luxury lodge in Lusaka, Zambia — Umuzilikazi Lodge offers refined rooms, the Grill House, and the VIP Lounge in a sanctuary of Zambian heritage and modern comfort." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+/*  /index.html  200
+/// <reference types="vite/client" />
+
+interface ImportMetaEnv {
+  readonly VITE_SUPABASE_URL: string;
+  readonly VITE_SUPABASE_ANON_KEY: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
+}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #fbf9f8;
+  color: #1b1c1c;
+  font-family: 'Inter', sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Playfair Display', serif;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* Glassmorphism per the design system: 12px blur, 80% ivory fill, 1px low-opacity white edge */
+  .glass-panel {
+    background: rgba(252, 249, 248, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-panel-dark {
+    background: rgba(1, 31, 20, 0.55);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .ambient-shadow {
+    box-shadow: 0 20px 60px -20px rgba(1, 54, 38, 0.08);
+  }
+
+  .label-caps {
+    @apply font-body text-label-md uppercase tracking-[0.05em];
+  }
+}import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App';
+import { useAuthStore } from './store/authStore';
+import './index.css';
+
+useAuthStore.getState().init();
+
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Login from './pages/admin/Login';
+import Dashboard from './pages/admin/Dashboard';
+import Bookings from './pages/admin/Bookings';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/admin/login" element={<Login />} />
+        <Route
+          path="/admin/dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/admin/bookings"
+          element={
+            <ProtectedRoute>
+              <Bookings />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+export type RoomId = 'standard' | 'executive';
+
+export interface Room {
+  id: RoomId;
+  name: string;
+  tagline: string;
+  description: string;
+  pricePerNight: number;
+  currency: 'ZMW';
+  maxGuests: number;
+  bedConfig: string;
+  amenities: string[];
+  image: string;
+}
+
+export interface BookingDraft {
+  roomId: RoomId | null;
+  checkIn: string | null; // ISO date
+  checkOut: string | null; // ISO date
+  guests: number;
+}
+
+export type BookingStatus = 'pending' | 'confirmed' | 'cancelled';
+
+export interface BookingRecord {
+  id: string;
+  roomId: RoomId;
+  roomName: string;
+  guestName: string;
+  checkIn: string;
+  checkOut: string;
+  guests: number;
+  nights: number;
+  total: number;
+  status: BookingStatus;
+  createdAt: string; // ISO timestamp
+}
+
+export interface Review {
+  author: string;
+  rating: number;
+  quote: string;
+}
+
+export interface GalleryImage {
+  src: string;
+  alt: string;
+  category: 'rooms' | 'grounds' | 'grill-house' | 'vip-lounge';
+}
+/**
+ * UMUZILIKAZI LODGE — DESIGN TOKENS
+ * Source of truth, derived from the "Zambian Serenity" design system.
+ * Brand thesis: Affordable luxury rooted in Lusaka — Modern-Organic
+ * structure with Refined Glassmorphism, the shield as a quiet recurring motif.
+ *
+ * Do not hardcode hex values in components — import from here.
+ */
+
+export const colors = {
+  // Core surfaces
+  surface: '#fbf9f8',
+  surfaceDim: '#dbdad9',
+  surfaceBright: '#fbf9f8',
+  surfaceContainerLowest: '#ffffff',
+  surfaceContainerLow: '#f5f3f3',
+  surfaceContainer: '#efeded',
+  surfaceContainerHigh: '#e9e8e7',
+  surfaceContainerHighest: '#e3e2e2',
+  onSurface: '#1b1c1c',
+  onSurfaceVariant: '#414944',
+  inverseSurface: '#303030',
+  inverseOnSurface: '#f2f0f0',
+  outline: '#717974',
+  outlineVariant: '#c0c9c2',
+
+  // Brand
+  primary: '#001f14', // Forest Green (deep)
+  onPrimary: '#ffffff',
+  primaryContainer: '#013626',
+  onPrimaryContainer: '#71a08b',
+  inversePrimary: '#a0d1ba',
+
+  secondary: '#755b00', // Warm Gold (deep, for text use)
+  onSecondary: '#ffffff',
+  secondaryContainer: '#fed979',
+  onSecondaryContainer: '#785d03',
+
+  tertiary: '#1a1a1a', // Charcoal
+  onTertiary: '#ffffff',
+  tertiaryContainer: '#2e2e2f',
+  onTertiaryContainer: '#979596',
+
+  error: '#ba1a1a',
+  onError: '#ffffff',
+
+  // Fixed tones (for accents on dark or light regardless of theme)
+  primaryFixed: '#bbedd5',
+  primaryFixedDim: '#a0d1ba',
+  secondaryFixed: '#ffdf90',
+  secondaryFixedDim: '#e6c366',
+
+  background: '#fbf9f8',
+  onBackground: '#1b1c1c',
+  surfaceVariant: '#e3e2e2',
+
+  // Named brand tones referenced directly in copy/design discussions
+  forestGreen: '#013626',
+  forestGreenDeep: '#001f14',
+  warmGold: '#755b00',
+  warmGoldBright: '#e6c366',
+  softBeige: '#f0eded',
+  ivoryWhite: '#fcf9f8',
+
+  // Extended for the luxury lodge direction: bronze + wood, used sparingly
+  bronze: '#8a6a3f',
+  wood: '#5c4530',
+  stone: '#cfc9c0',
+
+  glassFill: 'rgba(252, 249, 248, 0.8)',
+  glassFillDark: 'rgba(1, 31, 20, 0.55)',
+} as const;
+
+export const typography = {
+  displayLg: { font: 'Playfair Display', size: '64px', weight: 700, lineHeight: 1.1, tracking: '-0.02em' },
+  headlineLg: { font: 'Playfair Display', size: '40px', weight: 600, lineHeight: 1.2 },
+  headlineLgMobile: { font: 'Playfair Display', size: '32px', weight: 600, lineHeight: 1.2 },
+  headlineMd: { font: 'Playfair Display', size: '28px', weight: 500, lineHeight: 1.3 },
+  bodyLg: { font: 'Inter', size: '18px', weight: 400, lineHeight: 1.6 },
+  bodyMd: { font: 'Inter', size: '16px', weight: 400, lineHeight: 1.6 },
+  labelMd: { font: 'Inter', size: '14px', weight: 600, lineHeight: 1.0, tracking: '0.05em' },
+  labelSm: { font: 'Inter', size: '12px', weight: 500, lineHeight: 1.0 },
+} as const;
+
+export const radii = {
+  sm: '0.25rem',
+  DEFAULT: '0.5rem',
+  md: '0.75rem',
+  lg: '1rem',
+  xl: '1.5rem',
+  full: '9999px',
+} as const;
+
+export const spacing = {
+  base: '8px',
+  gutter: '24px',
+  marginMobile: '16px',
+  sectionVSpace: '80px',
+  maxWidth: '1200px',
+} as const;
+
+/** Lodge facts — single source of truth for content that appears in multiple places. */
+export const lodgeInfo = {
+  name: 'Umuzilikazi Lodge',
+  legalSignName: 'Umuzilikazi Guest House',
+  tagline: 'Where Zambian Heritage Meets Timeless Luxury',
+  address: 'Umuzilikazi Rd, Lusaka, Zambia',
+  coordinates: { lat: -15.3887641, lng: 28.2612351 },
+  phone: '+260 974 135 737',
+  whatsapp: '+260974135737',
+  hours: 'Open 24/7 — reception always staffed',
+  facebook: 'https://www.facebook.com/profile.php?id=61558718952115',
+  footerCredit: 'Designed by Prolink Creatives',
+} as const;
+
+export const rooms = [
+  {
+    id: 'standard',
+    name: 'Standard Room',
+    pricePerNight: 360,
+    currency: 'ZMW',
+  },
+  {
+    id: 'executive',
+    name: 'Executive Room',
+    pricePerNight: 2000,
+    currency: 'ZMW',
+  },
+] as const;
+
+export const reviews = [
+  { author: 'Bwembia Andy', rating: 5, quote: 'Splendid experience.' },
+  { author: 'Lameck Chirwa', rating: 4, quote: 'Affordable pricing and worth every penny.' },
+  { author: 'Evans Moyo', rating: 5, quote: 'Simply exceptional.' },
+] as const;
+import type { Room } from '../types';
+
+export const roomsData: Room[] = [
+  {
+    id: 'standard',
+    name: 'Standard Room',
+    tagline: 'Quiet comfort, considered detail',
+    description:
+      'A calm, well-appointed room for travelers who want genuine comfort without excess — soft linens, a private en-suite, and the same warm hospitality found throughout the lodge.',
+    pricePerNight: 360,
+    currency: 'ZMW',
+    maxGuests: 2,
+    bedConfig: '1 Queen bed',
+    amenities: ['Free Wi-Fi', 'En-suite bathroom', 'Daily housekeeping', 'Secure parking'],
+    image: '/images/room-standard.jpg',
+  },
+  {
+    id: 'executive',
+    name: 'Executive Room',
+    tagline: 'The lodge at its most refined',
+    description:
+      'Our most spacious accommodation — generous proportions, premium furnishings, and thoughtful finishing touches for guests who want the fullest expression of Umuzilikazi hospitality.',
+    pricePerNight: 2000,
+    currency: 'ZMW',
+    maxGuests: 2,
+    bedConfig: '1 Queen bed',
+    amenities: ['Free Wi-Fi', 'En-suite bathroom', 'Premium linens', 'Daily housekeeping', 'Secure parking', 'Priority reception service'],
+    image: '/images/room-executive.jpg',
+  },
+];
+import { createClient } from '@supabase/supabase-js';
+
+// Typed via src/vite-env.d.ts. That declaration is a compile-time contract,
+// not a runtime guarantee — if .env is missing, Vite leaves these undefined
+// at runtime regardless, so the guard below still matters.
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  // eslint-disable-next-line no-console
+  console.warn(
+    'Supabase env vars are missing. Copy .env.example to .env and fill in your project URL + anon key. ' +
+      'Booking storage and admin login will not work until this is set.',
+  );
+}
+
+export const supabase = createClient(supabaseUrl ?? '', supabaseAnonKey ?? '');
+import { differenceInCalendarDays, parseISO } from 'date-fns';
+
+export function formatZmw(amount: number): string {
+  // Deliberately not using Intl's `currency` style here: ICU data for
+  // ZMW varies by runtime (some environments render "ZMW 360", others
+  // "K 360" with a non-breaking space) which produced inconsistent,
+  // wrongly-spaced output. Plain grouped-number formatting + a manual
+  // "K" prefix is deterministic across every browser and Node version.
+  const grouped = new Intl.NumberFormat('en-US', {
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+  return `K${grouped}`;
+}
+
+export function nightsBetween(checkIn: string | null, checkOut: string | null): number {
+  if (!checkIn || !checkOut) return 0;
+  const nights = differenceInCalendarDays(parseISO(checkOut), parseISO(checkIn));
+  return nights > 0 ? nights : 0;
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import type { BookingDraft, RoomId } from '../types';
+
+interface BookingState extends BookingDraft {
+  setRoom: (roomId: RoomId) => void;
+  setDates: (checkIn: string | null, checkOut: string | null) => void;
+  setGuests: (guests: number) => void;
+  reset: () => void;
+}
+
+const initialDraft: BookingDraft = {
+  roomId: null,
+  checkIn: null,
+  checkOut: null,
+  guests: 1,
+};
+
+/**
+ * Placeholder persistence via localStorage. Replace with a real backend +
+ * PayChangu integration before this goes to production — see README.
+ */
+export const useBookingStore = create<BookingState>()(
+  persist(
+    (set) => ({
+      ...initialDraft,
+      setRoom: (roomId) => set({ roomId }),
+      setDates: (checkIn, checkOut) => set({ checkIn, checkOut }),
+      setGuests: (guests) => set({ guests }),
+      reset: () => set(initialDraft),
+    }),
+    { name: 'umuzilikazi-booking-draft' },
+  ),
+);
+import { create } from 'zustand';
+import { supabase } from '../lib/supabaseClient';
+import type { BookingRecord, BookingStatus } from '../types';
+
+interface DbBookingRow {
+  id: string;
+  room_id: BookingRecord['roomId'];
+  room_name: string;
+  guest_name: string;
+  check_in: string;
+  check_out: string;
+  guests: number;
+  nights: number;
+  total: number;
+  status: BookingStatus;
+  created_at: string;
+}
+
+function fromRow(row: DbBookingRow): BookingRecord {
+  return {
+    id: row.id,
+    roomId: row.room_id,
+    roomName: row.room_name,
+    guestName: row.guest_name,
+    checkIn: row.check_in,
+    checkOut: row.check_out,
+    guests: row.guests,
+    nights: row.nights,
+    total: Number(row.total),
+    status: row.status,
+    createdAt: row.created_at,
+  };
+}
+
+interface BookingsRecordState {
+  records: BookingRecord[];
+  loading: boolean;
+  error: string | null;
+  fetchRecords: () => Promise<void>;
+  addRecord: (record: Omit<BookingRecord, 'id' | 'createdAt' | 'status'>) => Promise<{ ok: boolean; error?: string }>;
+  setStatus: (id: string, status: BookingStatus) => Promise<void>;
+  removeRecord: (id: string) => Promise<void>;
+}
+
+/**
+ * Backed by Supabase (see /supabase/schema.sql for the table + RLS policies).
+ * Anonymous visitors can insert via the public booking widget; only the
+ * authenticated admin account can read, update, or delete records — so this
+ * intentionally does NOT fetch on mount for anonymous users (it will return
+ * an empty/forbidden result). Call fetchRecords() after admin login.
+ */
+export const useBookingsRecordStore = create<BookingsRecordState>()((set, get) => ({
+  records: [],
+  loading: false,
+  error: null,
+
+  fetchRecords: async () => {
+    set({ loading: true, error: null });
+    const { data, error } = await supabase
+      .from('bookings')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) {
+      set({ loading: false, error: error.message });
+      return;
+    }
+    set({ records: (data as DbBookingRow[]).map(fromRow), loading: false });
+  },
+
+  addRecord: async (record) => {
+    const { error } = await supabase.from('bookings').insert({
+      room_id: record.roomId,
+      room_name: record.roomName,
+      guest_name: record.guestName,
+      check_in: record.checkIn,
+      check_out: record.checkOut,
+      guests: record.guests,
+      nights: record.nights,
+      total: record.total,
+    });
+
+    if (error) return { ok: false, error: error.message };
+    return { ok: true };
+  },
+
+  setStatus: async (id, status) => {
+    const previous = get().records;
+    set({ records: previous.map((r) => (r.id === id ? { ...r, status } : r)) });
+
+    const { error } = await supabase.from('bookings').update({ status }).eq('id', id);
+    if (error) {
+      // Revert on failure
+      set({ records: previous, error: error.message });
+    }
+  },
+
+  removeRecord: async (id) => {
+    const previous = get().records;
+    set({ records: previous.filter((r) => r.id !== id) });
+
+    const { error } = await supabase.from('bookings').delete().eq('id', id);
+    if (error) {
+      set({ records: previous, error: error.message });
+    }
+  },
+}));
+import { create } from 'zustand';
+import type { Session } from '@supabase/supabase-js';
+import { supabase } from '../lib/supabaseClient';
+
+interface AuthState {
+  session: Session | null;
+  isAuthenticated: boolean;
+  initializing: boolean;
+  login: (email: string, password: string) => Promise<{ ok: boolean; error?: string }>;
+  logout: () => Promise<void>;
+  init: () => void;
+}
+
+/**
+ * Real auth via Supabase (Authentication -> Users in your project dashboard).
+ * No credentials are hardcoded in this app anymore — create the admin
+ * account directly in Supabase. See README for setup steps.
+ */
+export const useAuthStore = create<AuthState>()((set) => ({
+  session: null,
+  isAuthenticated: false,
+  initializing: true,
+
+  init: () => {
+    supabase.auth.getSession().then(({ data }) => {
+      set({ session: data.session, isAuthenticated: !!data.session, initializing: false });
+    });
+    supabase.auth.onAuthStateChange((_event, session) => {
+      set({ session, isAuthenticated: !!session });
+    });
+  },
+
+  login: async (email, password) => {
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) return { ok: false, error: error.message };
+    set({ session: data.session, isAuthenticated: !!data.session });
+    return { ok: true };
+  },
+
+  logout: async () => {
+    await supabase.auth.signOut();
+    set({ session: null, isAuthenticated: false });
+  },
+}));
+import type { SVGProps } from 'react';
+
+/**
+ * The Umuzilikazi shield — recreated from the lodge's actual signage
+ * (oval/vesica shield, slat pattern, crossed paddles). This is the
+ * site's signature motif: used as the nav logo, a faint watermark on
+ * dark sections, and a section-divider element. Never as a generic
+ * "African pattern" filler — it should always read as this brand's mark.
+ *
+ * currentColor drives the shield fill so it can sit on light or dark
+ * backgrounds; the paddle and ornament accents stay fixed brand tones.
+ */
+export default function ShieldMark(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      viewBox="0 0 200 280"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Umuzilikazi shield mark"
+      {...props}
+    >
+      <g>
+        <rect x="96.5" y="20" width="7" height="220" rx="3.5" fill="#755B00" transform="rotate(-32 100 130)" />
+        <ellipse cx="100" cy="34" rx="13" ry="20" fill="#F0EDED" transform="rotate(-32 100 34)" />
+        <rect x="96.5" y="20" width="7" height="220" rx="3.5" fill="#755B00" transform="rotate(32 100 130)" />
+        <ellipse cx="100" cy="34" rx="13" ry="20" fill="#F0EDED" transform="rotate(32 100 34)" />
+      </g>
+
+      <rect x="91" y="6" width="18" height="34" rx="9" fill="#FCF9F8" />
+
+      <path
+        d="M100 58
+           C 72 80, 58 118, 58 150
+           C 58 182, 72 220, 100 244
+           C 128 220, 142 182, 142 150
+           C 142 118, 128 80, 100 58 Z"
+        fill="currentColor"
+        stroke="#FCF9F8"
+        strokeWidth="4"
+      />
+
+      <g fill="#FCF9F8">
+        <rect x="76" y="116" width="18" height="6" rx="1.5" />
+        <rect x="76" y="134" width="18" height="6" rx="1.5" />
+        <rect x="76" y="152" width="18" height="6" rx="1.5" />
+        <rect x="76" y="170" width="18" height="6" rx="1.5" />
+
+        <rect x="106" y="116" width="18" height="6" rx="1.5" />
+        <rect x="106" y="134" width="18" height="6" rx="1.5" />
+        <rect x="106" y="152" width="18" height="6" rx="1.5" />
+        <rect x="106" y="170" width="18" height="6" rx="1.5" />
+      </g>
+    </svg>
+  );
+}
+import ShieldMark from './ShieldMark';
+
+interface ShieldDividerProps {
+  tone?: 'light' | 'dark';
+  className?: string;
+}
+
+/**
+ * A quiet horizontal rule with the shield mark centered at low opacity.
+ * This is the one place the motif repeats outside the logo — kept small
+ * and restrained so it reads as a signature, not decoration.
+ */
+export default function ShieldDivider({ tone = 'light', className = '' }: ShieldDividerProps) {
+  const lineColor = tone === 'light' ? 'bg-outline-variant' : 'bg-white/15';
+  const iconColor = tone === 'light' ? 'text-forest-green-deep/30' : 'text-ivory-white/30';
+
+  return (
+    <div className={`flex items-center justify-center gap-4 ${className}`} aria-hidden="true">
+      <span className={`h-px w-16 md:w-28 ${lineColor}`} />
+      <ShieldMark className={`h-6 w-auto ${iconColor}`} />
+      <span className={`h-px w-16 md:w-28 ${lineColor}`} />
+    </div>
+  );
+}
+import { useEffect, useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import ShieldMark from '../ShieldMark';
+import { lodgeInfo } from '../../design-system/tokens';
+
+const NAV_LINKS = [
+  { label: 'Rooms', href: '#rooms' },
+  { label: 'Experiences', href: '#experiences' },
+  { label: 'Gallery', href: '#gallery' },
+  { label: 'Amenities', href: '#amenities' },
+  { label: 'Contact', href: '#contact' },
+];
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  return (
+    <header
+      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-500 ${
+        scrolled ? 'glass-panel shadow-sm' : 'bg-transparent'
+      }`}
+    >
+      <nav className="mx-auto max-w-content px-margin-mobile md:px-gutter h-20 flex items-center justify-between">
+        <a href="#top" className="flex items-center gap-3 group">
+          <ShieldMark
+            className={`h-9 w-auto transition-colors ${
+              scrolled ? 'text-forest-green-deep' : 'text-ivory-white'
+            }`}
+          />
+          <span
+            className={`font-display text-lg tracking-wide transition-colors ${
+              scrolled ? 'text-forest-green-deep' : 'text-ivory-white'
+            }`}
+          >
+            {lodgeInfo.name}
+          </span>
+        </a>
+
+        <ul className="hidden md:flex items-center gap-9">
+          {NAV_LINKS.map((link) => (
+            <li key={link.href}>
+              <a
+                href={link.href}
+                className={`label-caps relative pb-1 transition-colors ${
+                  scrolled ? 'text-on-surface-variant hover:text-forest-green-deep' : 'text-ivory-white/85 hover:text-ivory-white'
+                }`}
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <a
+          href="#booking"
+          className={`hidden md:inline-flex label-caps px-6 py-3 rounded transition-all ${
+            scrolled
+              ? 'bg-warm-gold text-ivory-white hover:bg-warm-gold-bright hover:text-forest-green-deep'
+              : 'bg-ivory-white/10 border border-ivory-white/40 text-ivory-white hover:bg-ivory-white hover:text-forest-green-deep'
+          }`}
+        >
+          Book Now
+        </a>
+
+        <button
+          aria-label="Toggle menu"
+          onClick={() => setMobileOpen((v) => !v)}
+          className={`md:hidden ${scrolled ? 'text-forest-green-deep' : 'text-ivory-white'}`}
+        >
+          {mobileOpen ? <X size={26} /> : <Menu size={26} />}
+        </button>
+      </nav>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="md:hidden glass-panel overflow-hidden"
+          >
+            <ul className="flex flex-col px-margin-mobile py-6 gap-5">
+              {NAV_LINKS.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="label-caps text-on-surface-variant"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a
+                  href="#booking"
+                  onClick={() => setMobileOpen(false)}
+                  className="label-caps inline-block bg-warm-gold text-ivory-white px-6 py-3 rounded"
+                >
+                  Book Now
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
+import { Facebook, MapPin, Phone } from 'lucide-react';
+import ShieldMark from '../ShieldMark';
+import { lodgeInfo } from '../../design-system/tokens';
+
+export default function Footer() {
+  return (
+    <footer className="bg-forest-green-deep text-ivory-white">
+      <div className="mx-auto max-w-content px-margin-mobile md:px-gutter py-16 grid grid-cols-1 md:grid-cols-3 gap-12">
+        <div>
+          <div className="flex items-center gap-3 mb-4">
+            <ShieldMark className="h-9 w-auto text-ivory-white" />
+            <span className="font-display text-lg">{lodgeInfo.name}</span>
+          </div>
+          <p className="text-body-md text-ivory-white/70 max-w-xs">{lodgeInfo.tagline}</p>
+        </div>
+
+        <div>
+          <h3 className="label-caps text-warm-gold-bright mb-4">Visit</h3>
+          <ul className="space-y-3 text-body-md text-ivory-white/80">
+            <li className="flex gap-3">
+              <MapPin size={18} className="shrink-0 mt-0.5 text-warm-gold-bright" />
+              <span>{lodgeInfo.address}</span>
+            </li>
+            <li className="flex gap-3">
+              <Phone size={18} className="shrink-0 mt-0.5 text-warm-gold-bright" />
+              <a href={`tel:${lodgeInfo.phone.replace(/\s/g, '')}`} className="hover:text-ivory-white">
+                {lodgeInfo.phone}
+              </a>
+            </li>
+            <li className="text-ivory-white/60">{lodgeInfo.hours}</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 className="label-caps text-warm-gold-bright mb-4">Connect</h3>
+          <div className="flex gap-4">
+            <a
+              href={lodgeInfo.facebook}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Umuzilikazi Lodge on Facebook"
+              className="h-11 w-11 rounded-full border border-ivory-white/20 flex items-center justify-center hover:bg-ivory-white/10 transition-colors"
+            >
+              <Facebook size={18} />
+            </a>
+            <a
+              href={`https://wa.me/${lodgeInfo.whatsapp.replace('+', '')}`}
+              target="_blank"
+              rel="noreferrer"
+              className="label-caps px-5 py-3 rounded border border-ivory-white/20 hover:bg-ivory-white/10 transition-colors"
+            >
+              WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="border-t border-ivory-white/10">
+        <div className="mx-auto max-w-content px-margin-mobile md:px-gutter py-6 flex flex-col md:flex-row items-center justify-between gap-3 text-label-sm text-ivory-white/50">
+          <span>© {new Date().getFullYear()} {lodgeInfo.name}. All rights reserved.</span>
+          <span>{lodgeInfo.footerCredit}</span>
+        </div>
+      </div>
+    </footer>
+  );
+}
+}
+import type { ReactNode } from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { LayoutDashboard, CalendarCheck, LogOut } from 'lucide-react';
+import ShieldMark from '../ShieldMark';
+import { useAuthStore } from '../../store/authStore';
+import { lodgeInfo } from '../../design-system/tokens';
+
+const links = [
+  { to: '/admin/dashboard', label: 'Dashboard', icon: LayoutDashboard },
+  { to: '/admin/bookings', label: 'Bookings', icon: CalendarCheck },
+];
+
+export default function AdminLayout({ children }: { children: ReactNode }) {
+  const logout = useAuthStore((s) => s.logout);
+  const navigate = useNavigate();
+
+  async function handleLogout() {
+    await logout();
+    navigate('/admin/login');
+  }
+
+  return (
+    <div className="min-h-screen flex bg-soft-beige">
+      <aside className="w-64 shrink-0 bg-forest-green-deep text-ivory-white flex flex-col">
+        <div className="flex items-center gap-3 px-6 py-7 border-b border-ivory-white/10">
+          <ShieldMark className="h-9 w-auto text-ivory-white" />
+          <div>
+            <p className="font-display text-body-lg leading-tight">{lodgeInfo.name}</p>
+            <p className="label-caps text-warm-gold-bright text-[10px]">Reception</p>
+          </div>
+        </div>
+
+        <nav className="flex-1 px-4 py-6 space-y-1">
+          {links.map((link) => (
+            <NavLink
+              key={link.to}
+              to={link.to}
+              className={({ isActive }) =>
+                `flex items-center gap-3 px-4 py-3 rounded label-caps transition-colors ${
+                  isActive ? 'bg-warm-gold text-ivory-white' : 'text-ivory-white/70 hover:bg-ivory-white/10'
+                }`
+              }
+            >
+              <link.icon size={18} />
+              {link.label}
+            </NavLink>
+          ))}
+        </nav>
+
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-3 px-4 py-4 mx-4 mb-6 rounded label-caps text-ivory-white/60 hover:bg-ivory-white/10 transition-colors"
+        >
+          <LogOut size={18} /> Sign Out
+        </button>
+      </aside>
+
+      <main className="flex-1 px-6 md:px-10 py-10 overflow-x-hidden">{children}</main>
+    </div>
+  );
+}
+import { motion } from 'framer-motion';
+import { ChevronDown } from 'lucide-react';
+import { lodgeInfo } from '../../design-system/tokens';
+
+const headlineWords = lodgeInfo.tagline.split(' ');
+
+export default function Hero() {
+  return (
+    <section id="top" className="relative min-h-screen flex items-end overflow-hidden bg-forest-green-deep">
+      {/* Real property photo, not stock imagery */}
+      <div className="absolute inset-0">
+        <img
+          src="/images/hero-night-facade.jpg"
+          alt="Umuzilikazi Lodge reception entrance at night, warmly lit"
+          className="h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest-green-deep via-forest-green-deep/40 to-forest-green-deep/10" />
+        <div className="absolute inset-0 bg-forest-green-deep/20" />
+      </div>
+
+      <div className="relative z-10 w-full mx-auto max-w-content px-margin-mobile md:px-gutter pb-28 md:pb-36 pt-40">
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
+          className="label-caps text-warm-gold-bright mb-6"
+        >
+          Lusaka, Zambia
+        </motion.p>
+
+        <h1 className="font-display text-headline-lg-mobile md:text-display-lg text-ivory-white leading-[1.1] max-w-3xl overflow-hidden">
+          {headlineWords.map((word, i) => (
+            <span key={i} className="inline-block overflow-hidden mr-3 last:mr-0">
+              <motion.span
+                initial={{ y: '110%' }}
+                animate={{ y: '0%' }}
+                transition={{ duration: 0.7, delay: 0.15 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                className="inline-block"
+              >
+                {word}
+              </motion.span>
+            </span>
+          ))}
+        </h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.7, ease: 'easeOut' }}
+          className="font-body text-body-lg text-ivory-white/75 max-w-xl mt-6"
+        >
+          A boutique sanctuary in the heart of Lusaka — refined rooms, the Grill House,
+          and the VIP Lounge, all gathered around a quiet courtyard pool.
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.9, ease: 'easeOut' }}
+          className="flex flex-wrap gap-4 mt-10"
+        >
+          <a
+            href="#booking"
+            className="label-caps bg-warm-gold text-ivory-white px-8 py-4 rounded hover:bg-warm-gold-bright hover:text-forest-green-deep transition-colors"
+          >
+            Book Now
+          </a>
+          <a
+            href="#rooms"
+            className="label-caps border border-ivory-white/40 text-ivory-white px-8 py-4 rounded hover:bg-ivory-white/10 transition-colors"
+          >
+            Explore Rooms
+          </a>
+        </motion.div>
+      </div>
+
+      <motion.div
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-ivory-white/60"
+        aria-hidden="true"
+      >
+        <ChevronDown size={26} />
+      </motion.div>
+    </section>
+  );
+}
+import { useMemo, useState } from 'react';
+import { motion } from 'framer-motion';
+import { Calendar, Users, CheckCircle2, User } from 'lucide-react';
+import { useBookingStore } from '../../store/bookingStore';
+import { useBookingsRecordStore } from '../../store/bookingsRecordStore';
+import { roomsData } from '../../design-system/rooms-data';
+import { formatZmw, nightsBetween } from '../../utils/format';
+import { lodgeInfo } from '../../design-system/tokens';
+
+export default function BookingWidget() {
+  const { roomId, checkIn, checkOut, guests, setRoom, setDates, setGuests } = useBookingStore();
+  const addRecord = useBookingsRecordStore((s) => s.addRecord);
+  const [guestName, setGuestName] = useState('');
+  const [confirmed, setConfirmed] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  const selectedRoom = useMemo(() => roomsData.find((r) => r.id === roomId) ?? roomsData[0], [roomId]);
+  const nights = nightsBetween(checkIn, checkOut);
+  const total = nights > 0 ? nights * selectedRoom.pricePerNight : 0;
+
+  const today = new Date().toISOString().slice(0, 10);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!checkIn || !checkOut || nights <= 0) return;
+    setSubmitting(true);
+    setSubmitError('');
+    const result = await addRecord({
+      roomId: selectedRoom.id,
+      roomName: selectedRoom.name,
+      guestName: guestName || 'Guest (name not given)',
+      checkIn,
+      checkOut,
+      guests,
+      nights,
+      total,
+    });
+    setSubmitting(false);
+    if (result.ok) {
+      setConfirmed(true);
+    } else {
+      setSubmitError(
+        result.error ?? "Couldn't save your request right now — please send it via WhatsApp instead.",
+      );
+    }
+  }
+
+  const whatsappMessage = encodeURIComponent(
+    `Hello Umuzilikazi Lodge, I'd like to book the ${selectedRoom.name} from ${checkIn} to ${checkOut} (${nights} night${nights === 1 ? '' : 's'}, ${guests} guest${guests === 1 ? '' : 's'}). Estimated total: ${formatZmw(total)}.`,
+  );
+
+  return (
+    <section id="booking" className="relative -mt-24 md:-mt-28 z-20 px-margin-mobile md:px-gutter">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.7, ease: 'easeOut' }}
+        className="glass-panel ambient-shadow rounded-xl mx-auto max-w-content p-6 md:p-10"
+      >
+        {!confirmed ? (
+          <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-12 gap-6 items-end">
+            <div className="md:col-span-3">
+              <label className="label-caps text-on-surface-variant block mb-2 flex items-center gap-2">
+                <User size={14} /> Name
+              </label>
+              <input
+                type="text"
+                required
+                value={guestName}
+                onChange={(e) => setGuestName(e.target.value)}
+                placeholder="Your name"
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              />
+            </div>
+
+            <div className="md:col-span-3">
+              <label className="label-caps text-on-surface-variant block mb-2">Room</label>
+              <select
+                value={selectedRoom.id}
+                onChange={(e) => setRoom(e.target.value as typeof selectedRoom.id)}
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              >
+                {roomsData.map((room) => (
+                  <option key={room.id} value={room.id}>
+                    {room.name} — {formatZmw(room.pricePerNight)}/night
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="md:col-span-3">
+              <label className="label-caps text-on-surface-variant block mb-2 flex items-center gap-2">
+                <Calendar size={14} /> Check in
+              </label>
+              <input
+                type="date"
+                required
+                min={today}
+                value={checkIn ?? ''}
+                onChange={(e) => setDates(e.target.value, checkOut)}
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              />
+            </div>
+
+            <div className="md:col-span-3">
+              <label className="label-caps text-on-surface-variant block mb-2 flex items-center gap-2">
+                <Calendar size={14} /> Check out
+              </label>
+              <input
+                type="date"
+                required
+                min={checkIn ?? today}
+                value={checkOut ?? ''}
+                onChange={(e) => setDates(checkIn, e.target.value)}
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              />
+            </div>
+
+            <div className="md:col-span-2">
+              <label className="label-caps text-on-surface-variant block mb-2 flex items-center gap-2">
+                <Users size={14} /> Guests
+              </label>
+              <select
+                value={guests}
+                onChange={(e) => setGuests(Number(e.target.value))}
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              >
+                {[1, 2].map((g) => (
+                  <option key={g} value={g}>
+                    {g} guest{g > 1 ? 's' : ''}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <div className="md:col-span-1">
+              <button
+                type="submit"
+                disabled={nights <= 0 || submitting}
+                className="w-full label-caps bg-warm-gold disabled:bg-outline-variant disabled:cursor-not-allowed text-ivory-white px-4 py-3.5 rounded hover:bg-warm-gold-bright hover:text-forest-green-deep transition-colors"
+              >
+                {submitting ? '…' : 'Check'}
+              </button>
+            </div>
+
+            {submitError && (
+              <div className="md:col-span-12 -mt-2">
+                <p className="text-error text-label-sm mb-2">{submitError}</p>
+                <a
+                  href={`https://wa.me/${lodgeInfo.whatsapp.replace('+', '')}?text=${whatsappMessage}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="label-caps text-warm-gold underline"
+                >
+                  Send this request via WhatsApp instead
+                </a>
+              </div>
+            )}
+
+            {nights > 0 && (
+              <div className="md:col-span-12 pt-4 border-t border-outline-variant flex flex-col md:flex-row md:items-center justify-between gap-2">
+                <span className="text-body-md text-on-surface-variant">
+                  {nights} night{nights > 1 ? 's' : ''} · {selectedRoom.name}
+                </span>
+                <span className="font-display text-headline-md text-forest-green-deep">
+                  {formatZmw(total)} <span className="text-body-md text-on-surface-variant font-body">estimated total</span>
+                </span>
+              </div>
+            )}
+          </form>
+        ) : (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center py-6"
+          >
+            <CheckCircle2 className="mx-auto text-forest-green mb-4" size={40} />
+            <h3 className="font-display text-headline-md text-forest-green-deep mb-2">Request received</h3>
+            <p className="text-body-md text-on-surface-variant max-w-md mx-auto mb-6">
+              {selectedRoom.name}, {checkIn} → {checkOut} ({nights} night{nights > 1 ? 's' : ''}), {guests} guest{guests > 1 ? 's' : ''}.
+              Estimated total {formatZmw(total)}. Reception has this request — for the fastest reply, send it
+              over WhatsApp too.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <a
+                href={`https://wa.me/${lodgeInfo.whatsapp.replace('+', '')}?text=${whatsappMessage}`}
+                target="_blank"
+                rel="noreferrer"
+                className="label-caps bg-warm-gold text-ivory-white px-6 py-3 rounded hover:bg-warm-gold-bright hover:text-forest-green-deep transition-colors"
+              >
+                Send via WhatsApp
+              </a>
+              <button
+                onClick={() => setConfirmed(false)}
+                className="label-caps border border-outline-variant px-6 py-3 rounded text-on-surface-variant hover:bg-soft-beige transition-colors"
+              >
+                Edit details
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </motion.div>
+    </section>
+  );
+}
+import { motion } from 'framer-motion';
+import ShieldDivider from '../ShieldDivider';
+
+export default function About() {
+  return (
+    <section className="py-section-v px-margin-mobile md:px-gutter bg-surface">
+      <div className="mx-auto max-w-content">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16 items-center">
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="md:col-span-5"
+          >
+            <p className="label-caps text-warm-gold mb-4">A Lusaka Sanctuary</p>
+            <h2 className="font-display text-headline-lg-mobile md:text-headline-lg text-forest-green-deep mb-6">
+              A home, run with care, built on hospitality
+            </h2>
+            <p className="text-body-lg text-on-surface-variant mb-4">
+              Umuzilikazi Lodge sits quietly on its own grounds in Lusaka — a courtyard pool,
+              a reception that never closes, and rooms designed for genuine rest rather than
+              passing through. Every detail, from the shield at the gate to the linens on the
+              bed, is looked after by people who treat the lodge as their own.
+            </p>
+            <p className="text-body-md text-on-surface-variant">
+              We built this place around the idea that comfort and warmth matter more than
+              spectacle — and that a guest house can still feel considered, generous, and
+              genuinely Zambian.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-100px' }}
+            transition={{ duration: 0.8, ease: 'easeOut', delay: 0.15 }}
+            className="md:col-span-7 rounded-xl overflow-hidden ambient-shadow"
+          >
+            <img
+              src="/images/reception-lounge.jpg"
+              alt="Umuzilikazi Lodge reception lounge with leather seating"
+              className="w-full h-[420px] md:h-[520px] object-cover"
+            />
+          </motion.div>
+        </div>
+
+        <ShieldDivider className="mt-section-v" />
+      </div>
+    </section>
+  );
+}
+import { motion } from 'framer-motion';
+import { Wifi, BedDouble, Users, ShieldCheck } from 'lucide-react';
+import { roomsData } from '../../design-system/rooms-data';
+import { formatZmw } from '../../utils/format';
+import { useBookingStore } from '../../store/bookingStore';
+
+export default function Rooms() {
+  const setRoom = useBookingStore((s) => s.setRoom);
+
+  return (
+    <section id="rooms" className="py-section-v px-margin-mobile md:px-gutter bg-soft-beige">
+      <div className="mx-auto max-w-content">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="label-caps text-warm-gold mb-4">Accommodation</p>
+          <h2 className="font-display text-headline-lg-mobile md:text-headline-lg text-forest-green-deep mb-4">
+            Two rooms, one standard of care
+          </h2>
+          <p className="text-body-lg text-on-surface-variant">
+            Whichever you choose, the comfort is the same — only the size and finishing change.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {roomsData.map((room, i) => (
+            <motion.article
+              key={room.id}
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: i * 0.1 }}
+              className="group bg-surface-container-lowest rounded-xl overflow-hidden ambient-shadow hover:shadow-xl transition-shadow duration-500"
+            >
+              <div className="relative h-72 overflow-hidden">
+                <img
+                  src={room.image}
+                  alt={`${room.name} at Umuzilikazi Lodge`}
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <div className="absolute top-4 right-4 glass-panel rounded px-3 py-1.5">
+                  <span className="font-display text-body-lg text-forest-green-deep">{formatZmw(room.pricePerNight)}</span>
+                  <span className="text-label-sm text-on-surface-variant">/night</span>
+                </div>
+              </div>
+
+              <div className="p-7">
+                <h3 className="font-display text-headline-md text-forest-green-deep mb-1">{room.name}</h3>
+                <p className="label-caps text-warm-gold mb-4">{room.tagline}</p>
+                <p className="text-body-md text-on-surface-variant mb-6">{room.description}</p>
+
+                <div className="flex flex-wrap gap-x-6 gap-y-2 mb-6 text-on-surface-variant text-label-sm">
+                  <span className="flex items-center gap-2"><BedDouble size={16} /> {room.bedConfig}</span>
+                  <span className="flex items-center gap-2"><Users size={16} /> Up to {room.maxGuests} guests</span>
+                  <span className="flex items-center gap-2"><Wifi size={16} /> Free Wi-Fi</span>
+                </div>
+
+                <ul className="grid grid-cols-2 gap-2 mb-7">
+                  {room.amenities.map((a) => (
+                    <li key={a} className="flex items-center gap-2 text-body-md text-on-surface-variant">
+                      <ShieldCheck size={14} className="text-forest-green shrink-0" />
+                      {a}
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#booking"
+                  onClick={() => setRoom(room.id)}
+                  className="label-caps inline-flex w-full justify-center bg-forest-green-deep text-ivory-white px-6 py-3.5 rounded hover:bg-warm-gold transition-colors"
+                >
+                  Book {room.name}
+                </a>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+import { motion } from 'framer-motion';
+import { Flame, Music2, Waves } from 'lucide-react';
+
+const experiences = [
+  {
+    title: 'The Grill House',
+    icon: Flame,
+    image: '/images/grill-house-night.jpg',
+    description:
+      'Our signature restaurant, lit warm against the Lusaka night — open-flame grilling, generous plates, and a setting built for long, unhurried evenings.',
+  },
+  {
+    title: 'The VIP Lounge',
+    icon: Music2,
+    image: '/images/vip-lounge-jazz.jpg',
+    description:
+      'A private lounge with a jazz-club atmosphere — low light, live sound, and a space reserved for guests who want the evening to slow down.',
+  },
+  {
+    title: 'The Courtyard Pool',
+    icon: Waves,
+    image: '/images/pool-poolside.jpg',
+    description:
+      'A quiet stretch of blue water framed by palms, just steps from your room — open to all guests, day or evening.',
+  },
+];
+
+export default function Experiences() {
+  return (
+    <section id="experiences" className="py-section-v px-margin-mobile md:px-gutter bg-surface">
+      <div className="mx-auto max-w-content">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="label-caps text-warm-gold mb-4">On the Grounds</p>
+          <h2 className="font-display text-headline-lg-mobile md:text-headline-lg text-forest-green-deep">
+            Beyond the room
+          </h2>
+        </div>
+
+        <div className="flex flex-col gap-6">
+          {experiences.map((exp, i) => (
+            <motion.article
+              key={exp.title}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-80px' }}
+              transition={{ duration: 0.7, ease: 'easeOut', delay: i * 0.1 }}
+              className={`flex flex-col md:flex-row ${i % 2 === 1 ? 'md:flex-row-reverse' : ''} rounded-xl overflow-hidden ambient-shadow bg-surface-container-lowest`}
+            >
+              <div className="md:w-1/2 h-72 md:h-auto overflow-hidden">
+                <img src={exp.image} alt={exp.title} className="h-full w-full object-cover" />
+              </div>
+              <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                <exp.icon className="text-warm-gold mb-4" size={28} />
+                <h3 className="font-display text-headline-md text-forest-green-deep mb-3">{exp.title}</h3>
+                <p className="text-body-lg text-on-surface-variant">{exp.description}</p>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+import { motion } from 'framer-motion';
+import { Wifi, Car, WashingMachine, Clock, Waves, ShieldCheck } from 'lucide-react';
+
+const amenities = [
+  { icon: Waves, label: 'Courtyard pool' },
+  { icon: Wifi, label: 'Free Wi-Fi throughout' },
+  { icon: Car, label: 'Secure parking' },
+  { icon: WashingMachine, label: 'Laundry service' },
+  { icon: Clock, label: '24-hour reception' },
+  { icon: ShieldCheck, label: 'Secure, gated grounds' },
+];
+
+export default function Amenities() {
+  return (
+    <section id="amenities" className="py-section-v px-margin-mobile md:px-gutter bg-forest-green-deep text-ivory-white">
+      <div className="mx-auto max-w-content">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="label-caps text-warm-gold-bright mb-4">Every Stay Includes</p>
+          <h2 className="font-display text-headline-lg-mobile md:text-headline-lg">Amenities</h2>
+        </div>
+
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+          {amenities.map((a, i) => (
+            <motion.div
+              key={a.label}
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.5, delay: i * 0.06 }}
+              className="glass-panel-dark rounded-lg p-6 flex flex-col items-center text-center gap-3"
+            >
+              <a.icon className="text-warm-gold-bright" size={26} />
+              <span className="text-body-md text-ivory-white/85">{a.label}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import type { GalleryImage } from '../../types';
+
+const images: GalleryImage[] = [
+  { src: '/images/hero-night-facade.jpg', alt: 'Lodge entrance at night', category: 'grounds' },
+  { src: '/images/reception-lounge.jpg', alt: 'Reception lounge seating', category: 'grounds' },
+  { src: '/images/reception-aquarium.jpg', alt: 'Reception aquarium feature', category: 'grounds' },
+  { src: '/images/pool-poolside.jpg', alt: 'Courtyard pool', category: 'grounds' },
+  { src: '/images/room-standard.jpg', alt: 'Standard room', category: 'rooms' },
+  { src: '/images/room-executive.jpg', alt: 'Executive room', category: 'rooms' },
+  { src: '/images/room-standard-detail.jpg', alt: 'Room detail', category: 'rooms' },
+  { src: '/images/grill-house-night.jpg', alt: 'Grill House sign at night', category: 'grill-house' },
+  { src: '/images/grill-house-day.jpg', alt: 'Grill House exterior by day', category: 'grill-house' },
+  { src: '/images/vip-lounge-jazz.jpg', alt: 'VIP Lounge entrance', category: 'vip-lounge' },
+];
+
+const filters: { label: string; value: GalleryImage['category'] | 'all' }[] = [
+  { label: 'All', value: 'all' },
+  { label: 'Rooms', value: 'rooms' },
+  { label: 'Grounds', value: 'grounds' },
+  { label: 'Grill House', value: 'grill-house' },
+  { label: 'VIP Lounge', value: 'vip-lounge' },
+];
+
+export default function Gallery() {
+  const [filter, setFilter] = useState<(typeof filters)[number]['value']>('all');
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const visible = filter === 'all' ? images : images.filter((img) => img.category === filter);
+
+  function openAt(src: string) {
+    const idx = visible.findIndex((img) => img.src === src);
+    setLightboxIndex(idx);
+  }
+
+  function step(delta: number) {
+    if (lightboxIndex === null) return;
+    setLightboxIndex((lightboxIndex + delta + visible.length) % visible.length);
+  }
+
+  return (
+    <section id="gallery" className="py-section-v px-margin-mobile md:px-gutter bg-surface">
+      <div className="mx-auto max-w-content">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <p className="label-caps text-warm-gold mb-4">In Pictures</p>
+          <h2 className="font-display text-headline-lg-mobile md:text-headline-lg text-forest-green-deep">Gallery</h2>
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-3 mb-10">
+          {filters.map((f) => (
+            <button
+              key={f.value}
+              onClick={() => setFilter(f.value)}
+              className={`label-caps px-5 py-2.5 rounded-full border transition-colors ${
+                filter === f.value
+                  ? 'bg-forest-green-deep text-ivory-white border-forest-green-deep'
+                  : 'border-outline-variant text-on-surface-variant hover:border-forest-green-deep'
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="columns-2 md:columns-3 gap-4 [column-fill:_balance]">
+          {visible.map((img) => (
+            <motion.button
+              key={img.src}
+              onClick={() => openAt(img.src)}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="mb-4 block w-full overflow-hidden rounded-lg group"
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                loading="lazy"
+                className="w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </motion.button>
+          ))}
+        </div>
+      </div>
+
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-forest-green-deep/95 flex items-center justify-center p-6"
+            onClick={() => setLightboxIndex(null)}
+          >
+            <button
+              aria-label="Close gallery"
+              className="absolute top-6 right-6 text-ivory-white/80 hover:text-ivory-white"
+              onClick={() => setLightboxIndex(null)}
+            >
+              <X size={28} />
+            </button>
+            <button
+              aria-label="Previous image"
+              className="absolute left-4 md:left-10 text-ivory-white/70 hover:text-ivory-white"
+              onClick={(e) => {
+                e.stopPropagation();
+                step(-1);
+              }}
+            >
+              <ChevronLeft size={32} />
+            </button>
+            <motion.img
+              key={visible[lightboxIndex].src}
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              src={visible[lightboxIndex].src}
+              alt={visible[lightboxIndex].alt}
+              className="max-h-[80vh] max-w-[90vw] object-contain rounded"
+              onClick={(e) => e.stopPropagation()}
+            />
+            <button
+              aria-label="Next image"
+              className="absolute right-4 md:right-10 text-ivory-white/70 hover:text-ivory-white"
+              onClick={(e) => {
+                e.stopPropagation();
+                step(1);
+              }}
+            >
+              <ChevronRight size={32} />
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </section>
+  );
+}
+import { Star } from 'lucide-react';
+import { reviews } from '../../design-system/tokens';
+
+function StarRow({ rating }: { rating: number }) {
+  return (
+    <div className="flex gap-1 mb-4" aria-label={`${rating} out of 5 stars`}>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <Star
+          key={i}
+          size={16}
+          className={i < rating ? 'fill-warm-gold-bright text-warm-gold-bright' : 'text-outline-variant'}
+        />
+      ))}
+    </div>
+  );
+}
+
+export default function Testimonials() {
+  const looped = [...reviews, ...reviews];
+
+  return (
+    <section className="py-section-v bg-soft-beige overflow-hidden">
+      <div className="text-center max-w-2xl mx-auto mb-14 px-margin-mobile">
+        <p className="label-caps text-warm-gold mb-4">Guest Voices</p>
+        <h2 className="font-display text-headline-lg-mobile md:text-headline-lg text-forest-green-deep">
+          What guests say
+        </h2>
+      </div>
+
+      <div className="scroll-track-wrapper relative">
+        <div className="scroll-track flex gap-6 w-max px-margin-mobile">
+          {looped.map((r, i) => (
+            <article
+              key={`${r.author}-${i}`}
+              className="glass-panel rounded-xl p-8 w-[300px] shrink-0"
+            >
+              <StarRow rating={r.rating} />
+              <p className="font-display text-headline-md text-forest-green-deep mb-4">"{r.quote}"</p>
+              <p className="label-caps text-on-surface-variant">{r.author}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        .scroll-track {
+          animation: scroll-testimonials 30s linear infinite;
+        }
+        .scroll-track-wrapper:hover .scroll-track {
+          animation-play-state: paused;
+        }
+        @keyframes scroll-testimonials {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .scroll-track { animation: none; }
+        }
+      `}</style>
+    </section>
+  );
+}
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { MapPin, Phone, Clock } from 'lucide-react';
+import { lodgeInfo } from '../../design-system/tokens';
+
+export default function Contact() {
+  const [name, setName] = useState('');
+  const [message, setMessage] = useState('');
+
+  const mapSrc = `https://maps.google.com/maps?q=${lodgeInfo.coordinates.lat},${lodgeInfo.coordinates.lng}&z=16&output=embed`;
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const text = encodeURIComponent(
+      `Hello Umuzilikazi Lodge, my name is ${name || 'a guest'}. ${message}`,
+    );
+    window.open(`https://wa.me/${lodgeInfo.whatsapp.replace('+', '')}?text=${text}`, '_blank');
+  }
+
+  return (
+    <section id="contact" className="py-section-v px-margin-mobile md:px-gutter bg-surface">
+      <div className="mx-auto max-w-content">
+        <div className="text-center max-w-2xl mx-auto mb-16">
+          <p className="label-caps text-warm-gold mb-4">Get in Touch</p>
+          <h2 className="font-display text-headline-lg-mobile md:text-headline-lg text-forest-green-deep">Visit or Reach Us</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7 }}
+            className="rounded-xl overflow-hidden ambient-shadow"
+          >
+            <iframe
+              title="Umuzilikazi Lodge location"
+              src={mapSrc}
+              className="w-full h-72 md:h-full min-h-[320px] border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-80px' }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <div className="space-y-4 mb-8">
+              <p className="flex items-start gap-3 text-body-md text-on-surface-variant">
+                <MapPin size={18} className="text-warm-gold mt-0.5 shrink-0" /> {lodgeInfo.address}
+              </p>
+              <p className="flex items-start gap-3 text-body-md text-on-surface-variant">
+                <Phone size={18} className="text-warm-gold mt-0.5 shrink-0" />
+                <a href={`tel:${lodgeInfo.phone.replace(/\s/g, '')}`} className="hover:text-forest-green-deep">
+                  {lodgeInfo.phone}
+                </a>
+              </p>
+              <p className="flex items-start gap-3 text-body-md text-on-surface-variant">
+                <Clock size={18} className="text-warm-gold mt-0.5 shrink-0" /> {lodgeInfo.hours}
+              </p>
+            </div>
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input
+                type="text"
+                placeholder="Your name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              />
+              <textarea
+                placeholder="How can we help?"
+                required
+                rows={4}
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md focus:outline-none focus:ring-2 focus:ring-warm-gold-bright resize-none"
+              />
+              <button
+                type="submit"
+                className="label-caps w-full md:w-auto bg-warm-gold text-ivory-white px-8 py-3.5 rounded hover:bg-warm-gold-bright hover:text-forest-green-deep transition-colors"
+              >
+                Send via WhatsApp
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import Hero from '../components/sections/Hero';
+import BookingWidget from '../components/sections/BookingWidget';
+import About from '../components/sections/About';
+import Rooms from '../components/sections/Rooms';
+import Experiences from '../components/sections/Experiences';
+import Amenities from '../components/sections/Amenities';
+import Gallery from '../components/sections/Gallery';
+import Testimonials from '../components/sections/Testimonials';
+import Contact from '../components/sections/Contact';
+
+export default function Home() {
+  return (
+    <>
+      <Navbar />
+      <Hero />
+      <BookingWidget />
+      <About />
+      <Rooms />
+      <Experiences />
+      <Amenities />
+      <Gallery />
+      <Testimonials />
+      <Contact />
+      <Footer />
+    </>
+  );
+}
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import ShieldMark from '../../components/ShieldMark';
+import { useAuthStore } from '../../store/authStore';
+import { lodgeInfo } from '../../design-system/tokens';
+
+export default function Login() {
+  const login = useAuthStore((s) => s.login);
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const [submitting, setSubmitting] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSubmitting(true);
+    setError('');
+    const result = await login(email, password);
+    setSubmitting(false);
+    if (result.ok) {
+      navigate('/admin/dashboard');
+    } else {
+      setError(result.error ?? 'Incorrect email or password.');
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-forest-green-deep flex items-center justify-center px-margin-mobile">
+      <div className="glass-panel-dark rounded-xl p-10 w-full max-w-sm text-center">
+        <ShieldMark className="h-14 w-auto text-ivory-white mx-auto mb-6" />
+        <h1 className="font-display text-headline-md text-ivory-white mb-1">{lodgeInfo.name}</h1>
+        <p className="label-caps text-warm-gold-bright mb-8">Reception Dashboard</p>
+
+        <form onSubmit={handleSubmit} className="space-y-4 text-left">
+          <div>
+            <label className="label-caps text-ivory-white/70 block mb-2">Email</label>
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full bg-ivory-white/10 border border-ivory-white/20 rounded px-4 py-3 text-ivory-white placeholder:text-ivory-white/40 focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              placeholder="you@umuzilikazi.co.zm"
+            />
+          </div>
+          <div>
+            <label className="label-caps text-ivory-white/70 block mb-2">Password</label>
+            <input
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full bg-ivory-white/10 border border-ivory-white/20 rounded px-4 py-3 text-ivory-white placeholder:text-ivory-white/40 focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              placeholder="••••••••"
+            />
+          </div>
+
+          {error && <p className="text-error text-label-sm">{error}</p>}
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="label-caps w-full bg-warm-gold disabled:opacity-60 text-ivory-white px-6 py-3.5 rounded hover:bg-warm-gold-bright hover:text-forest-green-deep transition-colors"
+          >
+            {submitting ? 'Signing in…' : 'Sign In'}
+          </button>
+        </form>
+      </div>
+    </div>
+  );
+}
+import { useEffect, useMemo } from 'react';
+import { format, parseISO } from 'date-fns';
+import {
+  BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
+} from 'recharts';
+import { CalendarCheck, Wallet, Users, Clock } from 'lucide-react';
+import AdminLayout from '../../components/admin/AdminLayout';
+import { useBookingsRecordStore } from '../../store/bookingsRecordStore';
+import { formatZmw } from '../../utils/format';
+
+const ROOM_COLORS: Record<string, string> = {
+  standard: '#a0d1ba',
+  executive: '#e6c366',
+};
+
+function KpiCard({ icon: Icon, label, value }: { icon: typeof Wallet; label: string; value: string }) {
+  return (
+    <div className="bg-surface-container-lowest rounded-xl p-6 ambient-shadow flex items-center gap-4">
+      <div className="h-12 w-12 rounded-full bg-soft-beige flex items-center justify-center text-forest-green-deep">
+        <Icon size={20} />
+      </div>
+      <div>
+        <p className="text-label-sm text-on-surface-variant uppercase tracking-wide">{label}</p>
+        <p className="font-display text-headline-md text-forest-green-deep">{value}</p>
+      </div>
+    </div>
+  );
+}
+
+export default function Dashboard() {
+  const { records, loading, error, fetchRecords } = useBookingsRecordStore();
+
+  useEffect(() => {
+    fetchRecords();
+  }, [fetchRecords]);
+
+  const stats = useMemo(() => {
+    const pending = records.filter((r) => r.status === 'pending');
+    const confirmed = records.filter((r) => r.status === 'confirmed');
+    const projectedRevenue = confirmed.reduce((sum, r) => sum + r.total, 0);
+    const totalGuests = records.reduce((sum, r) => sum + r.guests, 0);
+    return { pendingCount: pending.length, confirmedCount: confirmed.length, projectedRevenue, totalGuests };
+  }, [records]);
+
+  const byDay = useMemo(() => {
+    const map = new Map<string, number>();
+    records.forEach((r) => {
+      const day = format(parseISO(r.createdAt), 'MMM d');
+      map.set(day, (map.get(day) ?? 0) + r.total);
+    });
+    return Array.from(map.entries()).map(([day, total]) => ({ day, total }));
+  }, [records]);
+
+  const roomSplit = useMemo(() => {
+    const map = new Map<string, number>();
+    records.forEach((r) => {
+      map.set(r.roomName, (map.get(r.roomName) ?? 0) + 1);
+    });
+    return Array.from(map.entries()).map(([name, value]) => ({ name, value }));
+  }, [records]);
+
+  return (
+    <AdminLayout>
+      <h1 className="font-display text-headline-lg-mobile text-forest-green-deep mb-1">Dashboard</h1>
+      <p className="text-body-md text-on-surface-variant mb-8">
+        Live view of requests submitted through the website booking widget.
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-5 mb-10">
+        <KpiCard icon={Clock} label="Pending requests" value={String(stats.pendingCount)} />
+        <KpiCard icon={CalendarCheck} label="Confirmed bookings" value={String(stats.confirmedCount)} />
+        <KpiCard icon={Wallet} label="Confirmed revenue" value={formatZmw(stats.projectedRevenue)} />
+        <KpiCard icon={Users} label="Total guests requested" value={String(stats.totalGuests)} />
+      </div>
+
+      {error && (
+        <div className="bg-error/10 border border-error/30 text-error rounded-lg px-5 py-4 mb-6 text-body-md">
+          Couldn't load bookings: {error}
+        </div>
+      )}
+
+      {loading ? (
+        <div className="bg-surface-container-lowest rounded-xl p-12 text-center ambient-shadow">
+          <p className="text-body-lg text-on-surface-variant">Loading bookings…</p>
+        </div>
+      ) : records.length === 0 ? (
+        <div className="bg-surface-container-lowest rounded-xl p-12 text-center ambient-shadow">
+          <p className="text-body-lg text-on-surface-variant">
+            No booking requests yet. Once a guest submits the booking widget on the website, it will appear here.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-2 bg-surface-container-lowest rounded-xl p-6 ambient-shadow">
+            <h2 className="label-caps text-on-surface-variant mb-6">Requested value by day</h2>
+            <ResponsiveContainer width="100%" height={280}>
+              <BarChart data={byDay}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e3e2e2" />
+                <XAxis dataKey="day" stroke="#717974" fontSize={12} />
+                <YAxis stroke="#717974" fontSize={12} tickFormatter={(v) => `K${v}`} />
+                <Tooltip formatter={(v: number) => formatZmw(v)} />
+                <Bar dataKey="total" fill="#755b00" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
+
+          <div className="bg-surface-container-lowest rounded-xl p-6 ambient-shadow">
+            <h2 className="label-caps text-on-surface-variant mb-6">Room split</h2>
+            <ResponsiveContainer width="100%" height={280}>
+              <PieChart>
+                <Pie data={roomSplit} dataKey="value" nameKey="name" innerRadius={60} outerRadius={90} paddingAngle={4}>
+                  {roomSplit.map((entry) => (
+                    <Cell
+                      key={entry.name}
+                      fill={entry.name.toLowerCase().includes('executive') ? ROOM_COLORS.executive : ROOM_COLORS.standard}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+              </PieChart>
+            </ResponsiveContainer>
+            <div className="flex justify-center gap-6 mt-2">
+              {roomSplit.map((r) => (
+                <span key={r.name} className="text-label-sm text-on-surface-variant flex items-center gap-2">
+                  <span
+                    className="h-2.5 w-2.5 rounded-full"
+                    style={{ background: r.name.toLowerCase().includes('executive') ? ROOM_COLORS.executive : ROOM_COLORS.standard }}
+                  />
+                  {r.name}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </AdminLayout>
+  );
+}
+import { useEffect, useState } from 'react';
+import { format, parseISO } from 'date-fns';
+import { Trash2 } from 'lucide-react';
+import AdminLayout from '../../components/admin/AdminLayout';
+import { useBookingsRecordStore } from '../../store/bookingsRecordStore';
+import { formatZmw } from '../../utils/format';
+import type { BookingStatus } from '../../types';
+
+const statusStyles: Record<BookingStatus, string> = {
+  pending: 'bg-secondary-fixed text-on-secondary-fixed-variant',
+  confirmed: 'bg-primary-fixed text-on-primary-fixed-variant',
+  cancelled: 'bg-surface-container-highest text-on-surface-variant',
+};
+
+const filterOptions: { label: string; value: BookingStatus | 'all' }[] = [
+  { label: 'All', value: 'all' },
+  { label: 'Pending', value: 'pending' },
+  { label: 'Confirmed', value: 'confirmed' },
+  { label: 'Cancelled', value: 'cancelled' },
+];
+
+export default function Bookings() {
+  const { records, loading, setStatus, removeRecord, fetchRecords } = useBookingsRecordStore();
+  const [filter, setFilter] = useState<BookingStatus | 'all'>('all');
+
+  useEffect(() => {
+    fetchRecords();
+  }, [fetchRecords]);
+
+  const visible = filter === 'all' ? records : records.filter((r) => r.status === filter);
+
+  return (
+    <AdminLayout>
+      <h1 className="font-display text-headline-lg-mobile text-forest-green-deep mb-1">Bookings</h1>
+      <p className="text-body-md text-on-surface-variant mb-6">
+        Requests submitted through the website. Confirm once availability and payment are verified.
+      </p>
+
+      <div className="flex gap-2 mb-6">
+        {filterOptions.map((f) => (
+          <button
+            key={f.value}
+            onClick={() => setFilter(f.value)}
+            className={`label-caps px-4 py-2 rounded-full border transition-colors ${
+              filter === f.value
+                ? 'bg-forest-green-deep text-ivory-white border-forest-green-deep'
+                : 'border-outline-variant text-on-surface-variant hover:border-forest-green-deep'
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
+
+      {loading ? (
+        <div className="bg-surface-container-lowest rounded-xl p-12 text-center ambient-shadow">
+          <p className="text-body-lg text-on-surface-variant">Loading bookings…</p>
+        </div>
+      ) : visible.length === 0 ? (
+        <div className="bg-surface-container-lowest rounded-xl p-12 text-center ambient-shadow">
+          <p className="text-body-lg text-on-surface-variant">No bookings match this filter.</p>
+        </div>
+      ) : (
+        <div className="bg-surface-container-lowest rounded-xl ambient-shadow overflow-x-auto">
+          <table className="w-full text-left">
+            <thead>
+              <tr className="border-b border-outline-variant">
+                {['Guest', 'Room', 'Dates', 'Guests', 'Total', 'Status', 'Requested', ''].map((h) => (
+                  <th key={h} className="label-caps text-on-surface-variant px-5 py-4 whitespace-nowrap">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {visible.map((r) => (
+                <tr key={r.id} className="border-b border-outline-variant last:border-0">
+                  <td className="px-5 py-4 text-body-md text-on-surface whitespace-nowrap">{r.guestName}</td>
+                  <td className="px-5 py-4 text-body-md text-on-surface-variant whitespace-nowrap">{r.roomName}</td>
+                  <td className="px-5 py-4 text-body-md text-on-surface-variant whitespace-nowrap">
+                    {r.checkIn} → {r.checkOut} ({r.nights}n)
+                  </td>
+                  <td className="px-5 py-4 text-body-md text-on-surface-variant">{r.guests}</td>
+                  <td className="px-5 py-4 text-body-md text-on-surface whitespace-nowrap">{formatZmw(r.total)}</td>
+                  <td className="px-5 py-4">
+                    <select
+                      value={r.status}
+                      onChange={(e) => setStatus(r.id, e.target.value as BookingStatus)}
+                      className={`label-caps rounded-full px-3 py-1.5 border-0 ${statusStyles[r.status]}`}
+                    >
+                      <option value="pending">Pending</option>
+                      <option value="confirmed">Confirmed</option>
+                      <option value="cancelled">Cancelled</option>
+                    </select>
+                  </td>
+                  <td className="px-5 py-4 text-label-sm text-on-surface-variant whitespace-nowrap">
+                    {format(parseISO(r.createdAt), 'MMM d, HH:mm')}
+                  </td>
+                  <td className="px-5 py-4">
+                    <button
+                      aria-label="Remove booking"
+                      onClick={() => removeRecord(r.id)}
+                      className="text-on-surface-variant hover:text-error transition-colors"
+                    >
+                      <Trash2 size={16} />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </AdminLayout>
+  );
+}
