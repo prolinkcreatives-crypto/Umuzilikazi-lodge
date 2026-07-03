@@ -18,7 +18,7 @@ export default function About() {
               A home, run with care, built on hospitality
             </h2>
             <p className="text-body-lg text-on-surface-variant mb-4">
-              Umuzilikazi Lodge sits quietly on its own grounds in Lusaka — a courtyard pool,
+              Moselekatse Guesthouse sits quietly on its own grounds in Lusaka — a courtyard pool,
               a reception that never closes, and rooms designed for genuine rest rather than
               passing through. Every detail, from the shield at the gate to the linens on the
               bed, is looked after by people who treat the lodge as their own.
@@ -39,7 +39,7 @@ export default function About() {
           >
             <img
               src="/images/reception-lounge.jpg"
-              alt="Umuzilikazi Lodge reception lounge with leather seating"
+              alt="Moselekatse Guesthouse reception lounge with leather seating"
               className="w-full h-[420px] md:h-[520px] object-cover"
             />
           </motion.div>
