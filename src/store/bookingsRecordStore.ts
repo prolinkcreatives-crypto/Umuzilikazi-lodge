@@ -78,6 +78,7 @@ export const useBookingsRecordStore = create<BookingsRecordState>()((set, get) =
       guests: record.guests,
       nights: record.nights,
       total: record.total,
+      status: 'pending',
     });
 
     if (error) return { ok: false, error: error.message };
