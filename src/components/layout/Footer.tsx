@@ -38,7 +38,7 @@ export default function Footer() {
               href={lodgeInfo.facebook}
               target="_blank"
               rel="noreferrer"
-              aria-label="Umuzilikazi Lodge on Facebook"
+              aria-label="Moselekatse Guesthouse on Facebook"
               className="h-11 w-11 rounded-full border border-ivory-white/20 flex items-center justify-center hover:bg-ivory-white/10 transition-colors"
             >
               <Facebook size={18} />
