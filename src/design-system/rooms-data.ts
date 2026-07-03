@@ -6,7 +6,7 @@ export const roomsData: Room[] = [
     name: 'Standard Room',
     tagline: 'Quiet comfort, considered detail',
     description:
-      'A calm, well-appointed room for travelers who want genuine comfort without excess — soft linens, a private en-suite, and the same warm hospitality found throughout the lodge.',
+      'A calm, well-appointed room for travelers who want genuine comfort without excess — soft linens, a private en-suite, and the same warm hospitality found throughout the guesthouse.',
     pricePerNight: 360,
     currency: 'ZMW',
     maxGuests: 2,
@@ -17,10 +17,10 @@ export const roomsData: Room[] = [
   {
     id: 'executive',
     name: 'Executive Room',
-    tagline: 'The lodge at its most refined',
+    tagline: 'The guesthouse at its most refined',
     description:
-      'Our most spacious accommodation — generous proportions, premium furnishings, and thoughtful finishing touches for guests who want the fullest expression of Umuzilikazi hospitality.',
-    pricePerNight: 2000,
+      'Our most spacious accommodation — generous proportions, premium furnishings, and thoughtful finishing touches for guests who want the fullest expression of Moselekatse hospitality.',
+    pricePerNight: 450,
     currency: 'ZMW',
     maxGuests: 2,
     bedConfig: '1 Queen bed',
