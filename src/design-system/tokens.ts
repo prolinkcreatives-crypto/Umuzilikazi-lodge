@@ -1,5 +1,5 @@
 /**
- * UMUZILIKAZI LODGE — DESIGN TOKENS
+ * MOSELEKATSE GUESTHOUSE — DESIGN TOKENS
  * Source of truth, derived from the "Zambian Serenity" design system.
  * Brand thesis: Affordable luxury rooted in Lusaka — Modern-Organic
  * structure with Refined Glassmorphism, the shield as a quiet recurring motif.
