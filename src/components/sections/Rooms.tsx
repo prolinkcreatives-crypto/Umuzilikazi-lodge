@@ -33,7 +33,7 @@ export default function Rooms() {
               <div className="relative h-72 overflow-hidden">
                 <img
                   src={room.image}
-                  alt={`${room.name} at Umuzilikazi Lodge`}
+                  alt={`${room.name} at Moselekatse Guesthouse`}
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 <div className="absolute top-4 right-4 glass-panel rounded px-3 py-1.5">
