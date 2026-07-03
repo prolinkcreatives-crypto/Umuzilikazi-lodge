@@ -12,7 +12,7 @@ export default function Contact() {
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const text = encodeURIComponent(
-      `Hello Umuzilikazi Lodge, my name is ${name || 'a guest'}. ${message}`,
+      `Hello Moselekatse Guesthouse, my name is ${name || 'a guest'}. ${message}`,
     );
     window.open(`https://wa.me/${lodgeInfo.whatsapp.replace('+', '')}?text=${text}`, '_blank');
   }
@@ -34,7 +34,7 @@ export default function Contact() {
             className="rounded-xl overflow-hidden ambient-shadow"
           >
             <iframe
-              title="Umuzilikazi Lodge location"
+              title="Moselekatse Guesthouse location"
               src={mapSrc}
               className="w-full h-72 md:h-full min-h-[320px] border-0"
               loading="lazy"
