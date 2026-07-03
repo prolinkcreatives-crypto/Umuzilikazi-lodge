@@ -17,7 +17,7 @@ export default function ShieldMark(props: SVGProps<SVGSVGElement>) {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       role="img"
-      aria-label="Umuzilikazi shield mark"
+      aria-label="Moselekatse shield mark"
       {...props}
     >
       <g>
