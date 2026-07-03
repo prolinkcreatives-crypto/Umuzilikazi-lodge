@@ -101,8 +101,8 @@ export const spacing = {
 
 /** Lodge facts — single source of truth for content that appears in multiple places. */
 export const lodgeInfo = {
-  name: 'Umuzilikazi Lodge',
-  legalSignName: 'Umuzilikazi Guest House',
+  name: 'Moselekatse Guesthouse',
+  legalSignName: 'Moselekatse Guesthouse',
   tagline: 'Where Zambian Heritage Meets Timeless Luxury',
   address: 'Umuzilikazi Rd, Lusaka, Zambia',
   coordinates: { lat: -15.3887641, lng: 28.2612351 },
@@ -123,7 +123,7 @@ export const rooms = [
   {
     id: 'executive',
     name: 'Executive Room',
-    pricePerNight: 2000,
+    pricePerNight: 450,
     currency: 'ZMW',
   },
 ] as const;
