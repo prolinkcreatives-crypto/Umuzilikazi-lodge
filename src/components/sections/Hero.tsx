@@ -11,7 +11,7 @@ export default function Hero() {
       <div className="absolute inset-0">
         <img
           src="/images/hero-night-facade.jpg"
-          alt="Umuzilikazi Lodge reception entrance at night, warmly lit"
+          alt="Moselekatse Guesthouse reception entrance at night, warmly lit"
           className="h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-forest-green-deep via-forest-green-deep/40 to-forest-green-deep/10" />
