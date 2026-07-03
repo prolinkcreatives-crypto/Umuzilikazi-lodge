@@ -4,7 +4,7 @@ import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import type { GalleryImage } from '../../types';
 
 const images: GalleryImage[] = [
-  { src: '/images/hero-night-facade.jpg', alt: 'Lodge entrance at night', category: 'grounds' },
+  { src: '/images/hero-night-facade.jpg', alt: 'Guesthouse entrance at night', category: 'grounds' },
   { src: '/images/reception-lounge.jpg', alt: 'Reception lounge seating', category: 'grounds' },
   { src: '/images/reception-aquarium.jpg', alt: 'Reception aquarium feature', category: 'grounds' },
   { src: '/images/pool-poolside.jpg', alt: 'Courtyard pool', category: 'grounds' },
