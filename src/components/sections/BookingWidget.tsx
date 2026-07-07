@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calendar, Users, CheckCircle2, User } from 'lucide-react';
+import { Calendar, Users, CheckCircle2, User, Phone, Mail } from 'lucide-react';
 import { useBookingStore } from '../../store/bookingStore';
 import { useBookingsRecordStore } from '../../store/bookingsRecordStore';
 import { roomsData } from '../../design-system/rooms-data';
@@ -11,6 +11,8 @@ export default function BookingWidget() {
   const { roomId, checkIn, checkOut, guests, setRoom, setDates, setGuests } = useBookingStore();
   const addRecord = useBookingsRecordStore((s) => s.addRecord);
   const [guestName, setGuestName] = useState('');
+  const [guestPhone, setGuestPhone] = useState('');
+  const [guestEmail, setGuestEmail] = useState('');
   const [confirmed, setConfirmed] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState('');
@@ -30,6 +32,8 @@ export default function BookingWidget() {
       roomId: selectedRoom.id,
       roomName: selectedRoom.name,
       guestName: guestName || 'Guest (name not given)',
+      guestPhone,
+      guestEmail: guestEmail || null,
       checkIn,
       checkOut,
       guests,
@@ -47,7 +51,7 @@ export default function BookingWidget() {
   }
 
   const whatsappMessage = encodeURIComponent(
-    `Hello Umuzilikazi Lodge, I'd like to book the ${selectedRoom.name} from ${checkIn} to ${checkOut} (${nights} night${nights === 1 ? '' : 's'}, ${guests} guest${guests === 1 ? '' : 's'}). Estimated total: ${formatZmw(total)}.`,
+    `Hello Moselekatse Guesthouse, I'd like to book the ${selectedRoom.name} from ${checkIn} to ${checkOut} (${nights} night${nights === 1 ? '' : 's'}, ${guests} guest${guests === 1 ? '' : 's'}). Estimated total: ${formatZmw(total)}.`,
   );
 
   return (
@@ -71,6 +75,33 @@ export default function BookingWidget() {
                 value={guestName}
                 onChange={(e) => setGuestName(e.target.value)}
                 placeholder="Your name"
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              />
+            </div>
+
+            <div className="md:col-span-3">
+              <label className="label-caps text-on-surface-variant block mb-2 flex items-center gap-2">
+                <Phone size={14} /> Phone
+              </label>
+              <input
+                type="tel"
+                required
+                value={guestPhone}
+                onChange={(e) => setGuestPhone(e.target.value)}
+                placeholder="+260 9XX XXX XXX"
+                className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
+              />
+            </div>
+
+            <div className="md:col-span-3">
+              <label className="label-caps text-on-surface-variant block mb-2 flex items-center gap-2">
+                <Mail size={14} /> Email <span className="normal-case text-on-surface-variant/60">(optional)</span>
+              </label>
+              <input
+                type="email"
+                value={guestEmail}
+                onChange={(e) => setGuestEmail(e.target.value)}
+                placeholder="you@example.com"
                 className="w-full bg-soft-beige border border-outline-variant rounded px-4 py-3 text-body-md text-on-surface focus:outline-none focus:ring-2 focus:ring-warm-gold-bright"
               />
             </div>
@@ -118,7 +149,7 @@ export default function BookingWidget() {
               />
             </div>
 
-            <div className="md:col-span-2">
+            <div className="md:col-span-3">
               <label className="label-caps text-on-surface-variant block mb-2 flex items-center gap-2">
                 <Users size={14} /> Guests
               </label>
@@ -135,7 +166,7 @@ export default function BookingWidget() {
               </select>
             </div>
 
-            <div className="md:col-span-1">
+            <div className="md:col-span-3">
               <button
                 type="submit"
                 disabled={nights <= 0 || submitting}
@@ -180,8 +211,8 @@ export default function BookingWidget() {
             <h3 className="font-display text-headline-md text-forest-green-deep mb-2">Request received</h3>
             <p className="text-body-md text-on-surface-variant max-w-md mx-auto mb-6">
               {selectedRoom.name}, {checkIn} → {checkOut} ({nights} night{nights > 1 ? 's' : ''}), {guests} guest{guests > 1 ? 's' : ''}.
-              Estimated total {formatZmw(total)}. Reception has this request — for the fastest reply, send it
-              over WhatsApp too.
+              Estimated total {formatZmw(total)}. Reception has this request and will reach out on the phone
+              number you gave to confirm — for the fastest reply, send it over WhatsApp too.
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <a
