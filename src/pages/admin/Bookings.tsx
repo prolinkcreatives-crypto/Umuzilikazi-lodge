@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
-import { Trash2 } from 'lucide-react';
+import { Trash2, Phone, MessageCircle, Mail } from 'lucide-react';
 import AdminLayout from '../../components/admin/AdminLayout';
 import { useBookingsRecordStore } from '../../store/bookingsRecordStore';
 import { formatZmw } from '../../utils/format';
@@ -19,6 +19,10 @@ const filterOptions: { label: string; value: BookingStatus | 'all' }[] = [
   { label: 'Cancelled', value: 'cancelled' },
 ];
 
+function digitsOnly(phone: string): string {
+  return phone.replace(/\D/g, '');
+}
+
 export default function Bookings() {
   const { records, loading, setStatus, removeRecord, fetchRecords } = useBookingsRecordStore();
   const [filter, setFilter] = useState<BookingStatus | 'all'>('all');
@@ -33,7 +37,7 @@ export default function Bookings() {
     <AdminLayout>
       <h1 className="font-display text-headline-lg-mobile text-forest-green-deep mb-1">Bookings</h1>
       <p className="text-body-md text-on-surface-variant mb-6">
-        Requests submitted through the website. Confirm once availability and payment are verified.
+        Requests submitted through the website. When you confirm one, use the contact icons to let the guest know directly.
       </p>
 
       <div className="flex gap-2 mb-6">
@@ -65,7 +69,7 @@ export default function Bookings() {
           <table className="w-full text-left">
             <thead>
               <tr className="border-b border-outline-variant">
-                {['Guest', 'Room', 'Dates', 'Guests', 'Total', 'Status', 'Requested', ''].map((h) => (
+                {['Guest', 'Contact', 'Room', 'Dates', 'Guests', 'Total', 'Status', 'Requested', ''].map((h) => (
                   <th key={h} className="label-caps text-on-surface-variant px-5 py-4 whitespace-nowrap">
                     {h}
                   </th>
@@ -76,6 +80,42 @@ export default function Bookings() {
               {visible.map((r) => (
                 <tr key={r.id} className="border-b border-outline-variant last:border-0">
                   <td className="px-5 py-4 text-body-md text-on-surface whitespace-nowrap">{r.guestName}</td>
+                  <td className="px-5 py-4 whitespace-nowrap">
+                    <div className="flex items-center gap-3">
+                      {r.guestPhone && (
+                        <>
+                          <a
+                            href={`tel:${r.guestPhone}`}
+                            aria-label={`Call ${r.guestName}`}
+                            className="text-on-surface-variant hover:text-forest-green-deep transition-colors"
+                          >
+                            <Phone size={16} />
+                          </a>
+                          <a
+                            href={`https://wa.me/${digitsOnly(r.guestPhone)}`}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label={`WhatsApp ${r.guestName}`}
+                            className="text-on-surface-variant hover:text-forest-green-deep transition-colors"
+                          >
+                            <MessageCircle size={16} />
+                          </a>
+                        </>
+                      )}
+                      {r.guestEmail && (
+                        <a
+                          href={`mailto:${r.guestEmail}?subject=${encodeURIComponent('Your booking at Moselekatse Guesthouse')}&body=${encodeURIComponent(`Hi ${r.guestName}, your booking (${r.roomName}, ${r.checkIn} to ${r.checkOut}) is confirmed.`)}`}
+                          aria-label={`Email ${r.guestName}`}
+                          className="text-on-surface-variant hover:text-forest-green-deep transition-colors"
+                        >
+                          <Mail size={16} />
+                        </a>
+                      )}
+                      {!r.guestPhone && !r.guestEmail && (
+                        <span className="text-label-sm text-on-surface-variant/50">No contact given</span>
+                      )}
+                    </div>
+                  </td>
                   <td className="px-5 py-4 text-body-md text-on-surface-variant whitespace-nowrap">{r.roomName}</td>
                   <td className="px-5 py-4 text-body-md text-on-surface-variant whitespace-nowrap">
                     {r.checkIn} → {r.checkOut} ({r.nights}n)
