@@ -27,6 +27,8 @@ export interface BookingRecord {
   roomId: RoomId;
   roomName: string;
   guestName: string;
+  guestPhone: string;
+  guestEmail: string | null;
   checkIn: string;
   checkOut: string;
   guests: number;
