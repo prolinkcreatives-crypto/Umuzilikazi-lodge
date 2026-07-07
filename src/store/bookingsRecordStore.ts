@@ -7,6 +7,8 @@ interface DbBookingRow {
   room_id: BookingRecord['roomId'];
   room_name: string;
   guest_name: string;
+  guest_phone: string | null;
+  guest_email: string | null;
   check_in: string;
   check_out: string;
   guests: number;
@@ -22,6 +24,8 @@ function fromRow(row: DbBookingRow): BookingRecord {
     roomId: row.room_id,
     roomName: row.room_name,
     guestName: row.guest_name,
+    guestPhone: row.guest_phone ?? '',
+    guestEmail: row.guest_email,
     checkIn: row.check_in,
     checkOut: row.check_out,
     guests: row.guests,
@@ -66,6 +70,8 @@ export const useBookingsRecordStore = create<BookingsRecordState>()((set, get) =
       room_id: record.roomId,
       room_name: record.roomName,
       guest_name: record.guestName,
+      guest_phone: record.guestPhone,
+      guest_email: record.guestEmail || null,
       check_in: record.checkIn,
       check_out: record.checkOut,
       guests: record.guests,
