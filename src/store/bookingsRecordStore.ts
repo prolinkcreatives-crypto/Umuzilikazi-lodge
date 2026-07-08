@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { supabase } from '../lib/supabaseClient';
+import { supabase, supabasePublic } from '../lib/supabaseClient';
 import type { BookingRecord, BookingStatus } from '../types';
 
 interface DbBookingRow {
@@ -66,7 +66,7 @@ export const useBookingsRecordStore = create<BookingsRecordState>()((set, get) =
   },
 
   addRecord: async (record) => {
-    const { error } = await supabase.from('bookings').insert({
+    const { error } = await supabasePublic.from('bookings').insert({
       room_id: record.roomId,
       room_name: record.roomName,
       guest_name: record.guestName,
