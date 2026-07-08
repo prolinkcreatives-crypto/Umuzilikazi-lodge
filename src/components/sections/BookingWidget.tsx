@@ -178,7 +178,12 @@ export default function BookingWidget() {
 
             {submitError && (
               <div className="md:col-span-12 -mt-2">
-                <p className="text-error text-label-sm mb-2">{submitError}</p>
+                <div className="bg-error/5 border border-error/20 rounded-lg p-4 mb-3">
+                  <p className="label-caps text-error mb-2">Couldn't save this request — technical detail below</p>
+                  <p className="font-mono text-[11px] leading-relaxed text-on-surface-variant break-words whitespace-pre-wrap">
+                    {submitError}
+                  </p>
+                </div>
                 <a
                   href={`https://wa.me/${lodgeInfo.whatsapp.replace('+', '')}?text=${whatsappMessage}`}
                   target="_blank"
@@ -235,4 +240,4 @@ export default function BookingWidget() {
       </motion.div>
     </section>
   );
-}
+                }
