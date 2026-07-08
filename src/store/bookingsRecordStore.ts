@@ -80,7 +80,15 @@ export const useBookingsRecordStore = create<BookingsRecordState>()((set, get) =
       status: 'pending',
     });
 
-    if (error) return { ok: false, error: error.message };
+    if (error) {
+      const parts = [
+        `Message: ${error.message}`,
+        error.details ? `Details: ${error.details}` : null,
+        error.hint ? `Hint: ${error.hint}` : null,
+        error.code ? `Code: ${error.code}` : null,
+      ].filter(Boolean);
+      return { ok: false, error: parts.join(' | ') };
+    }
     return { ok: true };
   },
 
