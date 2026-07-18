@@ -22,6 +22,60 @@
   </head>
   <body>
     <div id="root"></div>
+
+    <!--
+      Fallback content for crawlers that don't execute JavaScript.
+      Real browsers with JS enabled never render the block below at all —
+      it's invisible to every human visitor. It exists because most AI
+      crawlers (and some search crawlers) read raw HTML only and never run
+      the React app that builds the real page, so without this they'd see
+      nothing but the meta tags above.
+      IMPORTANT: keep this in sync by hand if room prices, address, or
+      contact details ever change — it does not update automatically.
+    -->
+    <noscript>
+      <main>
+        <h1>Moselekatse Guesthouse — Where Zambian Heritage Meets Timeless Luxury</h1>
+        <p>
+          A boutique luxury guesthouse in Lusaka, Zambia, offering refined rooms,
+          the Grill House restaurant, the VIP Lounge, and a courtyard pool, in a
+          sanctuary of Zambian heritage and modern comfort.
+        </p>
+
+        <h2>Rooms &amp; Pricing</h2>
+        <ul>
+          <li>
+            <strong>Standard Room</strong> — K360 per night. Quiet comfort and
+            considered detail: soft linens, a private en-suite, free Wi-Fi,
+            daily housekeeping, secure parking. Up to 2 guests, 1 queen bed.
+          </li>
+          <li>
+            <strong>Executive Room</strong> — K450 per night. The guesthouse
+            at its most refined: premium furnishings, thoughtful finishing
+            touches, free Wi-Fi, premium linens, daily housekeeping, secure
+            parking, priority reception service. Up to 2 guests, 1 queen bed.
+          </li>
+        </ul>
+
+        <h2>Amenities</h2>
+        <ul>
+          <li>Courtyard pool</li>
+          <li>Free Wi-Fi throughout</li>
+          <li>Secure parking</li>
+          <li>Laundry service</li>
+          <li>24-hour reception</li>
+          <li>Secure, gated grounds</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>
+          Address: Umuzilikazi Rd, Lusaka, Zambia<br />
+          Phone / WhatsApp: +260 974 135 737<br />
+          Hours: Open 24/7 — reception always staffed
+        </p>
+      </main>
+    </noscript>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
