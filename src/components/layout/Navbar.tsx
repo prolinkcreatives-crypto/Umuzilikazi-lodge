@@ -23,6 +23,15 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  function handleNavClick(e: React.MouseEvent<HTMLAnchorElement>, href: string) {
+    e.preventDefault();
+    setMobileOpen(false);
+    window.setTimeout(() => {
+      const target = document.querySelector(href);
+      target?.scrollIntoView({ behavior: 'smooth' });
+    }, 120);
+  }
+
   return (
     <header
       className={`fixed top-0 inset-x-0 z-50 transition-colors duration-500 ${
@@ -30,7 +39,11 @@ export default function Navbar() {
       }`}
     >
       <nav className="mx-auto max-w-content px-margin-mobile md:px-gutter h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-3 group">
+        <a
+          href="#top"
+          onClick={(e) => handleNavClick(e, '#top')}
+          className="flex items-center gap-3 group"
+        >
           <ShieldMark
             className={`h-9 w-auto transition-colors ${
               scrolled ? 'text-forest-green-deep' : 'text-ivory-white'
@@ -50,6 +63,7 @@ export default function Navbar() {
             <li key={link.href}>
               <a
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={`label-caps relative pb-1 transition-colors ${
                   scrolled ? 'text-on-surface-variant hover:text-forest-green-deep' : 'text-ivory-white/85 hover:text-ivory-white'
                 }`}
@@ -62,6 +76,7 @@ export default function Navbar() {
 
         <a
           href="#booking"
+          onClick={(e) => handleNavClick(e, '#booking')}
           className={`hidden md:inline-flex label-caps px-6 py-3 rounded transition-all ${
             scrolled
               ? 'bg-warm-gold text-ivory-white hover:bg-warm-gold-bright hover:text-forest-green-deep'
@@ -94,7 +109,7 @@ export default function Navbar() {
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    onClick={() => setMobileOpen(false)}
+                    onClick={(e) => handleNavClick(e, link.href)}
                     className="label-caps text-on-surface-variant"
                   >
                     {link.label}
@@ -104,7 +119,7 @@ export default function Navbar() {
               <li>
                 <a
                   href="#booking"
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => handleNavClick(e, '#booking')}
                   className="label-caps inline-block bg-warm-gold text-ivory-white px-6 py-3 rounded"
                 >
                   Book Now
